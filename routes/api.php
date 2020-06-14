@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/karyawan','Karyawan\KaryawanController');
 Route::resource('/divisi','Divisi\DivisiController');
+Route::resource('/dataasset','Aset\DataassetController');
