@@ -39,7 +39,8 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = Karyawan::create($request->all());
+        return response(new KaryawanResource($data),response::HTTP_CREATED);
     }
 
     /**
