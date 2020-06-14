@@ -49,9 +49,9 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Karyawan $karyawan)
     {
-        //
+        return new KaryawanResource($karyawan);
     }
 
     /**
@@ -72,9 +72,10 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Karyawan $karyawan)
     {
-        //
+        $karyawan->update($request->all());
+        return response('updated',Response::HTTP_CREATED);
     }
 
     /**
@@ -83,8 +84,9 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Karyawan $karyawan)
     {
-        //
+        $karyawan->delete();
+        return response('deleted', response::HTTP_OK);
     }
 }
