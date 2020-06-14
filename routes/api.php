@@ -22,3 +22,4 @@ Route::resource('/karyawan','Karyawan\KaryawanController');
 Route::resource('/divisi','Divisi\DivisiController');
 Route::resource('/dataasset','Aset\DataassetController');
 Route::resource('/lokasi','Lokasi\LokasiController');
+Route::resource('/aset','Aset\AsetController');
