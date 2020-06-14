@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\DataassetResource;
 use Illuminate\Http\Request;
 use App\Model\Aset\Dataasset;
+use Symfony\Component\HttpFoundation\Response;
 
 class DataassetController extends Controller
 {
@@ -37,7 +38,8 @@ class DataassetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=Dataasset::create($request->all());
+        return response(new DataassetResource($data),response::HTTP_CREATED);
     }
 
     /**
@@ -46,9 +48,9 @@ class DataassetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Dataasset $dataasset)
     {
-        //
+        return new DataassetResource($dataasset);
     }
 
     /**
@@ -69,9 +71,10 @@ class DataassetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Dataasset $dataasset)
     {
-        //
+        $dataasset->update($request->all());
+        return response('updated',response::HTTP_CREATED);
     }
 
     /**
@@ -80,8 +83,9 @@ class DataassetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dataasset $dataasset)
     {
-        //
+        $dataasset->delete();
+        return response('Deleted',response::HTTP_OK);
     }
 }
