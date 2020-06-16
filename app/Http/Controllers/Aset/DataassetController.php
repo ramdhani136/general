@@ -71,9 +71,9 @@ class DataassetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dataasset $dataasset)
+    public function update(Request $request, $id)
     {
-        $dataasset->update($request->all());
+        Aset::find($id)->update($request->all());
         return response('updated',response::HTTP_CREATED);
     }
 

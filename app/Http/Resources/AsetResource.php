@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AssetResource extends JsonResource
+class AsetResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,12 +18,13 @@ class AssetResource extends JsonResource
         [
             'id'=>$this->id,
             'kode'=>$this->kode,
-            'nama_asset'=>$this->dataasset->nama,
+            'asset'=>$this->dataasset->nama,
             'satuan'=>$this->dataasset->satuan,
+            'keterangan'=>$this->dataasset->keterangan,
+            'ket_lokasi'=>$this->lokasi->keterangan,
             'divisi'=>$this->divisi->nama,
             'lokasi'=>$this->lokasi->nama,
-            'ket_lokasi'=>$this->lokasi->keterangan,
-            'nama_karyawan'=>$this->karyawan->nama,
+            'karyawan'=>$this->karyawan->nama,
             'img'=>$this->img,
             'merk'=>$this->merk,
             'tipe'=>$this->tipe,
@@ -31,6 +32,8 @@ class AssetResource extends JsonResource
             'keterangan'=>$this->keterangan,
             'kondisi'=>$this->kondisi,
             'status'=>$this->status,
+
+
         ];
     }
 }

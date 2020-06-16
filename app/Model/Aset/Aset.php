@@ -4,12 +4,13 @@ namespace App\Model\Aset;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Aset\Dataasset;
-use App\Model\Divisi\Divisi;
-use App\Model\Lokasi\Lokasi;
+use App\Model\divisi\Divisi;
 use App\Model\Karyawan\Karyawan;
+use App\Model\Lokasi\Lokasi;
 
-class Assets extends Model
+class Aset extends Model
 {
+    protected $table="assets";
     protected $guarded=[];
 
     public function dataasset(){
@@ -20,11 +21,11 @@ class Assets extends Model
         return $this->belongsTo(Divisi::class,'id_divisi','id');
     }
 
-    public function lokasi(){
-        return $this->belongsTo(Lokasi::class,'id_lokasi','id');
+    public function karyawan(){
+        return $this->belongsTo(karyawan::class,'id_karyawan','id');
     }
 
-    public function karyawan(){
-        return $this->belongsTo(Karyawan::class,'id_karyawan','id');
+    public function lokasi(){
+        return $this->belongsTo(lokasi::class,'id_lokasi','id');
     }
 }

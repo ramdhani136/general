@@ -22,4 +22,8 @@ Route::resource('/karyawan','Karyawan\KaryawanController');
 Route::resource('/divisi','Divisi\DivisiController');
 Route::resource('/dataasset','Aset\DataassetController');
 Route::resource('/lokasi','Lokasi\LokasiController');
-Route::resource('/aset','Aset\AsetController');
+Route::resource('/asset','Aset\AsetController');
+Route::get('/asset/{id}','AsetController@show');
+Route::put('/asset/{id}','AsetController@update');
+Route::delete('/asset/{id}','AsetController@destroy');
+

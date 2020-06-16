@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Aset;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Aset\Assets;
-use App\Http\Resources\AssetResource;
+use App\Model\Aset\Aset;
+use App\Http\Resources\AsetResource;
+use Symfony\Component\HttpFoundation\Response;
 
 class AsetController extends Controller
 {
@@ -16,7 +17,7 @@ class AsetController extends Controller
      */
     public function index()
     {
-        return AssetResource::collection(Assets::latest()->get());
+        return AsetResource::collection(Aset::latest()->get());
     }
 
     /**
@@ -26,7 +27,7 @@ class AsetController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -37,7 +38,9 @@ class AsetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=Aset::create($request->all());
+        return response(new AsetResource($data),response::HTTP_CREATED);
+
     }
 
     /**
@@ -48,7 +51,8 @@ class AsetController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Aset::findOrFail($id);
+        return new AsetResource($data);
     }
 
     /**
@@ -71,7 +75,8 @@ class AsetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Aset::find($id)->update($request->all());
+        return response('updated',response::HTTP_CREATED);
     }
 
     /**
@@ -82,6 +87,7 @@ class AsetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Aset::find($id)->delete();
+        return response('deleted',response::HTTP_OK);
     }
 }
